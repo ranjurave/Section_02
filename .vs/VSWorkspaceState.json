@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\BullCowGame"
   ],
-  "SelectedNode": "\\BullCowGame.sln",
+  "SelectedNode": "\\BullCowGame\\main.cpp",
   "PreviewInSolutionExplorer": false
 }
