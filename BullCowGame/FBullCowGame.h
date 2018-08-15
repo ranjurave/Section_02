@@ -24,6 +24,7 @@ class FBullCowGame
 {
 public:
 	FBullCowGame(); //cunstructor
+
 	int32 GetMaxTry() const;
 	int32 GetCurrentTry() const;
 	int32 GetHiddenWordLength()const;
@@ -38,4 +39,6 @@ private:
 	int32 MyMaxTry;
 	FString MyHiddenWord;
 	bool bGameIsWon;
+
+	bool IsIsogram(FString) const;
 };

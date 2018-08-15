@@ -1,5 +1,7 @@
 ﻿  FBullCowGame.cpp
+d:\unreal projects\section_02\bullcowgame\fbullcowgame.cpp(89): error C2065: 'Word': undeclared identifier
+d:\unreal projects\section_02\bullcowgame\fbullcowgame.cpp(89): error C2228: left of '.length' must have class/struct/union
+  d:\unreal projects\section_02\bullcowgame\fbullcowgame.cpp(89): note: type is 'unknown-type'
   main.cpp
   Generating Code...
-d:\unreal projects\section_02\bullcowgame\main.cpp(89): warning C4715: 'GetValidGuess': not all control paths return a value
-  BullCowGame.vcxproj -> D:\Unreal Projects\Section_02\Debug\BullCowGame.exe
+d:\unreal projects\section_02\bullcowgame\main.cpp(93): warning C4715: 'GetValidGuess': not all control paths return a value

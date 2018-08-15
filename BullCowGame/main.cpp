@@ -7,13 +7,15 @@ user interaction. For game logic see the FBullCowGame class.
 #include <string>
 #include "FBullCowGame.h"
 
-using Ftext = std::string;
+using FText = std::string;
 using int32 = int;
 
 void PrintIntro();
 void PlayGame();
-Ftext GetValidGuess();
+FText GetValidGuess();
 bool AsktoPlayAgain();
+void PrintGameSummery();
+
 FBullCowGame BCGame; //instantiate an new game
 
 int main()
@@ -37,7 +39,7 @@ void PlayGame()
 	// not won and there are still tries remaining
 	while (!BCGame.IsGameWon() && BCGame.GetCurrentTry()<=MaxTry)
 	{
-		Ftext Guess = GetValidGuess(); 
+		FText Guess = GetValidGuess(); 
 		
 		// submit valid guess to the game and receive counts
 		FBullCowCount BullCountCount = BCGame.SubmitGuess(Guess);
@@ -45,7 +47,8 @@ void PlayGame()
 		std::cout << "Bulls = " << BullCountCount.Bulls;
 		std::cout << ". Cows = " << BullCountCount.Cows << "\n\n";
 	}
-	//TODO Summerise game
+	PrintGameSummery();
+	return;
 }
 
 // introduce the game
@@ -60,14 +63,14 @@ void PrintIntro()
 }
 
 // loop until user gives a valid guess
-Ftext GetValidGuess() 
+FText GetValidGuess() 
 {
 	EGuessStatus Status = EGuessStatus::Invalid_Status;
 	do {
 		int32 CurrentTry = BCGame.GetCurrentTry();
 		std::cout << "Try : "; std::cout << CurrentTry; std::cout << std::endl;
 		std::cout << "Enter your guess : ";
-		Ftext Guess = "";
+		FText Guess = "";
 		std::getline(std::cin, Guess);
 
 		EGuessStatus Status = BCGame.CheckGuessValidity(Guess);
@@ -92,8 +95,19 @@ Ftext GetValidGuess()
 bool AsktoPlayAgain()
 {
 	std::cout << "Do you want to play again ? (y/n)";
-	Ftext Response = "";
+	FText Response = "";
 	std::getline(std::cin, Response);
-	std::cout << "Is y ? "<<( Response[0] == 'y') ;
 	return (Response[0] == 'y' || Response[0] == 'Y');
+}
+
+void PrintGameSummery()
+{
+	if (BCGame.IsGameWon())
+	{
+		std::cout << "You Won\n";
+	}
+	else
+	{
+		std::cout << "Better luck nexd time\n";
+	}
 }
