@@ -1,10 +1,12 @@
+/* the game logic (no view code, or direct user interaction)*/
+
 #pragma once
 #include <string>
 
+// to make the syntax Unreal friendly
 using FString = std::string;
 using int32 = int;
 
-// all values initialised to zero
 struct FBullCowCount
 {
 	int32 Bulls = 0;
@@ -31,7 +33,7 @@ public:
 	bool IsGameWon() const;
 	EGuessStatus CheckGuessValidity(FString)const; // TODO make more rich return value
 
-	void Reset(); // TODO make a more rich return value.
+	void Reset(); 
 	FBullCowCount SubmitGuess(FString);
 
 private:

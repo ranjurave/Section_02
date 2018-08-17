@@ -1,3 +1,3 @@
-﻿  FBullCowGame.cpp
-d:\unreal\section_02\bullcowgame\fbullcowgame.cpp(11): warning C4267: 'return': conversion from 'size_t' to 'int32', possible loss of data
-  BullCowGame.vcxproj -> D:\Unreal\Section_02\x64\Debug\BullCowGame.exe
+﻿  main.cpp
+d:\unreal projects\section_02\bullcowgame\main.cpp(98): warning C4715: 'GetValidGuess': not all control paths return a value
+  BullCowGame.vcxproj -> D:\Unreal Projects\Section_02\x64\Debug\BullCowGame.exe

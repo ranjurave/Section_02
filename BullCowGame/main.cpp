@@ -3,20 +3,23 @@ This acts as the view in a MVC patters, and is responsible for all
 user interaction. For game logic see the FBullCowGame class.
 */
 
+#pragma once
 #include <iostream>
 #include <string>
 #include "FBullCowGame.h"
 
+// to make syntax unreal friendly
 using FText = std::string;
 using int32 = int;
 
+//function prototypes as outside a class
 void PrintIntro();
 void PlayGame();
 FText GetValidGuess();
 bool AsktoPlayAgain();
 void PrintGameSummery();
 
-FBullCowGame BCGame; //instantiate an new game
+FBullCowGame BCGame; //instantiate an new game, which we re use across plays
 
 int main()
 {
@@ -54,9 +57,11 @@ void PlayGame()
 // introduce the game
 void PrintIntro()
 {
-	std::cout << "\n\n Welcome to bull and cows, a fun word game\n";
+	std::cout << "\n\n\n****************************************************\n";
+	std::cout << "     Welcome to bull and cows, a fun word game   \n";
+	std::cout << "****************************************************\n\n";
 	std::cout << "can you guess the " << BCGame.GetHiddenWordLength();
-	std::cout << " letter isogram i am thinking of";
+	std::cout << " letter isogram I am thinking of";
 	std::cout << std::endl;
 	std::cout << std::endl;
 	return;
@@ -68,7 +73,7 @@ FText GetValidGuess()
 	EGuessStatus Status = EGuessStatus::Invalid_Status;
 	do {
 		int32 CurrentTry = BCGame.GetCurrentTry();
-		std::cout << "Try : "; std::cout << CurrentTry; std::cout << std::endl;
+		std::cout << "Try : "; std::cout << CurrentTry << " of " << BCGame.GetMaxTry() << std::endl;
 		std::cout << "Enter your guess : ";
 		FText Guess = "";
 		std::getline(std::cin, Guess);
@@ -108,6 +113,6 @@ void PrintGameSummery()
 	}
 	else
 	{
-		std::cout << "Better luck nexd time\n";
+		std::cout << "Better luck next time\n";
 	}
 }

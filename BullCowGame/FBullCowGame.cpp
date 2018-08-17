@@ -1,20 +1,28 @@
+#pragma once
 #include "FBullCowGame.h"
 #include <map>
-#define TMap std::map
 
+// to make syntax unreal friendly
+#define TMap std::map
 using int32 = int;
 
-FBullCowGame::FBullCowGame() { Reset(); }
+FBullCowGame::FBullCowGame() { Reset(); }  // default constructor
 
-int32 FBullCowGame::GetMaxTry() const { return MyMaxTry; }
+
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); }
 bool FBullCowGame::IsGameWon() const {	return bGameIsWon; }
 
+int32 FBullCowGame::GetMaxTry() const 
+{ 
+	TMap <int32, int32> WordLengthToMaxTries{ {4,5},{5,7},{6,8} };
+	return WordLengthToMaxTries[MyHiddenWord.length()];
+}
+
 void FBullCowGame::Reset()
 {
 	constexpr int32 MAX_TRIES = 3;
-	const FString HIDDEN_WORD = "planet";
+	const FString HIDDEN_WORD = "planet"; // this must be an isogram
 	
 	MyMaxTry = MAX_TRIES;
 	MyHiddenWord = HIDDEN_WORD;
@@ -31,7 +39,7 @@ EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 	}
 	else if (!IsLowercase(Guess)) // if the guess isnt all lowercase 
 	{
-		return EGuessStatus::Not_LowerCase; // TODO write function
+		return EGuessStatus::Not_LowerCase; 
 	}
 	else if (Guess.length() != GetHiddenWordLength())	// if the guess length is wrong
 	{
